@@ -84,9 +84,8 @@ function draw() {
 }
 
 keyPressed = function() {
-            pressedKeys[keyCode] = true;
-        };
-        keyReleased = function() {
-            pressedKeys[keyCode] = false;
-        };
+    pressedKeys[keyCode] = true;
+};
+keyReleased = function() {
+    pressedKeys[keyCode] = false;
 };
