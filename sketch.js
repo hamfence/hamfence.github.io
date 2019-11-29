@@ -31,7 +31,7 @@ function draw() {
         hamX = 500;
       }
     }
-    if(keyCode==39){
+    if(keyCode==39&&hamX<width-300){
       hamX+=10;
     }
 
@@ -41,7 +41,7 @@ function draw() {
     if(keyCode==83){
       larH=3;
     }
-    if(keyCode==65){
+    if(keyCode==65&&larX>0){
       larX-=10;
     }
     if(keyCode==68&&((hamX-larX)>100||hamH!=larH)){
