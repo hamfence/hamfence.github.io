@@ -2,6 +2,7 @@ var hamH = 2;
 var larH = 2;
 var larX = 100;
 var hamX = 500;
+var pressedKeys = [];
 var hamScore = 0;
 var larScore = 0;
 function setup() {
@@ -17,13 +18,13 @@ function setup() {
 
 function draw() {
   if(keyIsPressed==true){
-    if(keyCode==38){
+    if(pressedKeys[38]){
       hamH=1;
     }
-    if(keyCode==40){
+    if(pressedKeys[40]){
       hamH=3;
     }
-    if(keyCode==37&&((hamX-larX)>100||hamH!=larH)){
+    if(pressedKeys[37]&&((hamX-larX)>100||hamH!=larH)){
       hamX-=10;
       if((hamX-larX)<80){
         larScore++;
@@ -31,20 +32,20 @@ function draw() {
         hamX = 500;
       }
     }
-    if(keyCode==39&&hamX<width-300){
+    if(pressedKeys[39]&&hamX<width-300){
       hamX+=10;
     }
 
-    if(keyCode==87){
+    if(pressedKeys[87]){
       larH=1;
     }
-    if(keyCode==83){
+    if(pressedKeys[83]){
       larH=3;
     }
-    if(keyCode==65&&larX>0){
+    if(pressedKeys[65]&&larX>0){
       larX-=10;
     }
-    if(keyCode==68&&((hamX-larX)>100||hamH!=larH)){
+    if(pressedKeys[68]&&((hamX-larX)>100||hamH!=larH)){
       larX+=10;
       if((hamX-larX)<80){
         hamScore++;
@@ -81,3 +82,11 @@ function draw() {
   image(lar, larX, height-300, 300, 300);
   print(hamX-larX);
 }
+
+keyPressed = function() {
+            pressedKeys[keyCode] = true;
+        };
+        keyReleased = function() {
+            pressedKeys[keyCode] = false;
+        };
+};
