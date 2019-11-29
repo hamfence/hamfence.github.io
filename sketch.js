@@ -17,41 +17,43 @@ function setup() {
 }
 
 function draw() {
-  if(keyIsPressed==true){
-    if(pressedKeys[38]){
-      hamH=1;
+  if(pressedKeys[38]){
+    hamH=1;
+  }
+  else if(pressedKeys[40]){
+    hamH=3;
+  } else{
+    hamH = 2;
+  }
+  if(pressedKeys[37]&&((hamX-larX)>100||hamH!=larH)){
+    hamX-=10;
+    if((hamX-larX)<80){
+      larScore++;
+      larX = 100;
+      hamX = 500;
     }
-    if(pressedKeys[40]){
-      hamH=3;
-    }
-    if(pressedKeys[37]&&((hamX-larX)>100||hamH!=larH)){
-      hamX-=10;
-      if((hamX-larX)<80){
-        larScore++;
-        larX = 100;
-        hamX = 500;
-      }
-    }
-    if(pressedKeys[39]&&hamX<width-300){
-      hamX+=10;
-    }
+  }
+  if(pressedKeys[39]&&hamX<width-300){
+    hamX+=10;
+  }
 
-    if(pressedKeys[87]){
-      larH=1;
-    }
-    if(pressedKeys[83]){
-      larH=3;
-    }
-    if(pressedKeys[65]&&larX>0){
-      larX-=10;
-    }
-    if(pressedKeys[68]&&((hamX-larX)>100||hamH!=larH)){
-      larX+=10;
-      if((hamX-larX)<80){
-        hamScore++;
-        larX = 100;
-        hamX = 500;
-      }
+  if(pressedKeys[87]){
+    larH=1;
+  }
+  else if(pressedKeys[83]){
+    larH=3;
+  } else{
+    larH=2;
+  }
+  if(pressedKeys[65]&&larX>0){
+    larX-=10;
+  }
+  if(pressedKeys[68]&&((hamX-larX)>100||hamH!=larH)){
+    larX+=10;
+    if((hamX-larX)<80){
+      hamScore++;
+      larX = 100;
+      hamX = 500;
     }
   }
   image(back, 0, 0, width, height);
