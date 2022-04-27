@@ -59,7 +59,9 @@ function draw() {
   image(back, 0, 0, width, height);
   fill(255);
   textSize(65);
+  textAlign(Right)
   text(hamScore,5,60);
+  textAlign(Left)
   text(larScore,760,60);
   // Displays the image at point (0, height/2) at half size
   if(hamH==1){
